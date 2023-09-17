@@ -11,6 +11,9 @@ class tcpSocket : public QObject
 public:
     explicit tcpSocket(QObject *parent = nullptr);
     void runTcpSocket();
+    void messageSend(QString message);
+signals:
+    void clientReceiveMessageShow(QString message);
 
 public slots:
     void onConnected();

@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QHostAddress>
 #include <QTextBrowser>
+#include <QList>
 
 class tcpServer:public QObject
 {
@@ -14,9 +15,11 @@ class tcpServer:public QObject
 public:
     tcpServer();
     void runTcpServer();
+    void messageSend(QString message);
 
 signals:
     void serverMessageUpdate(QString message);
+    void serverReceiveMessageShow(QString message);
 
 public slots:
     void onNewConnect();
@@ -27,6 +30,8 @@ public slots:
 
 private:
     QTcpServer server;
+    QString currentMessage;
+    QList<QTcpSocket*> clients;
 };
 
 #endif // TCPSERVER_H

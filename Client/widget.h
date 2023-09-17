@@ -16,6 +16,14 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+private slots:
+    void onClientReceiveMessageShow(QString message);
+
+    void on_btnImagSelect_clicked();
+
+    void on_btnSendMessage_clicked();
+
+
 private:
     Ui::Widget *ui;
     tcpSocket tcpsocket;

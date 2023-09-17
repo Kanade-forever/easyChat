@@ -23,6 +23,8 @@ private:
     tcpServer tcpserver;
 
 private slots:
-    void onServerMessageUpdate(QString message);
+    void onServerStatusUpdate(QString message);
+    void onServerReceiveMessageShow(QString message);
+    void on_btnMessageSend_clicked();
 };
 #endif // WIDGET_H

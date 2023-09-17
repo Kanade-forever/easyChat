@@ -10,7 +10,9 @@ Widget::Widget(QWidget *parent)
     this->setWindowTitle("Server");
 
     connect(&tcpserver,&tcpServer::serverMessageUpdate,
-            this,&Widget::onServerMessageUpdate);
+            this,&Widget::onServerStatusUpdate);
+    connect(&tcpserver,&tcpServer::serverReceiveMessageShow,
+            this,&Widget::onServerReceiveMessageShow);
 
     tcpserver.runTcpServer();
 }
@@ -20,8 +22,19 @@ Widget::~Widget()
     delete ui;
 }
 
-void Widget::onServerMessageUpdate(QString message)
+void Widget::onServerStatusUpdate(QString message)
 {
-    this->ui->textBrowserShowServerMessage->append(message);
+    this->ui->textBrowserShowServerStatus->append(message);
+}
+
+void Widget::onServerReceiveMessageShow(QString message)
+{
+    this->ui->textBrowserMessageShow->append("[Client]" + message);
+}
+
+void Widget::on_btnMessageSend_clicked()
+{
+    tcpserver.messageSend(this->ui->textEditMessageInput->toPlainText());
+    this->ui->textBrowserMessageShow->append("[Server]" + this->ui->textEditMessageInput->toPlainText());
 }
 

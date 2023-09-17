@@ -22,6 +22,11 @@ void tcpSocket::runTcpSocket()
 
 }
 
+void tcpSocket::messageSend(QString message)
+{
+    this->socket.write(message.toUtf8());
+}
+
 void tcpSocket::onConnected()
 {
     qDebug()<<"[Client]:Connected";
@@ -37,6 +42,7 @@ void tcpSocket::onReadyRead()
     QObject *obj = this->sender();
     QTcpSocket *socket = qobject_cast<QTcpSocket*>(obj);
     QByteArray date = socket->readAll();
+    emit clientReceiveMessageShow("[Server]" + date);
     qDebug()<<"[Client]:"<<date;
 }
 
