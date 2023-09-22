@@ -5,6 +5,7 @@
 #include <tcpserver.h>
 #include <QLineEdit>
 #include <QThread>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }

@@ -32,7 +32,12 @@ void Widget::on_btnImagSelect_clicked()
 
 void Widget::on_btnSendMessage_clicked()
 {
+    if(this->ui->textEditMessageInput->toPlainText().isEmpty()){
+        QMessageBox::information(this,"Empty","没有输入!");
+        return;
+    }
     tcpsocket.messageSend(this->ui->textEditMessageInput->toPlainText());
     this->ui->textBrowserMessageShow->append("[Client]" + this->ui->textEditMessageInput->toPlainText());
+    this->ui->textEditMessageInput->clear();
 }
 
