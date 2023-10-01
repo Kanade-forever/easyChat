@@ -42,7 +42,7 @@ void tcpSocket::onReadyRead()
     QObject *obj = this->sender();
     QTcpSocket *socket = qobject_cast<QTcpSocket*>(obj);
     QByteArray date = socket->readAll();
-    emit clientReceiveMessageShow("[Server]" + date);
+    emit clientReceiveMessageShow(date);
     qDebug()<<"[Client]:"<<date;
 }
 

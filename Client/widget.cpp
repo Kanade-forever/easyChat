@@ -21,7 +21,7 @@ Widget::~Widget()
 
 void Widget::onClientReceiveMessageShow(QString message)
 {
-    this->ui->textBrowserMessageShow->append(message);
+    this->ui->textBrowserMessageShow->append(QDateTime::currentDateTime().toString() + "\n[Server]\n" + message);
 }
 
 void Widget::on_btnImagSelect_clicked()
@@ -37,7 +37,7 @@ void Widget::on_btnSendMessage_clicked()
         return;
     }
     tcpsocket.messageSend(this->ui->textEditMessageInput->toPlainText());
-    this->ui->textBrowserMessageShow->append("[Client]" + this->ui->textEditMessageInput->toPlainText());
+    this->ui->textBrowserMessageShow->append(QDateTime::currentDateTime().toString() + "\n[Client]\n" + this->ui->textEditMessageInput->toPlainText());
     this->ui->textEditMessageInput->clear();
 }
 

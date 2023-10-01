@@ -29,7 +29,8 @@ void Widget::onServerStatusUpdate(QString message)
 
 void Widget::onServerReceiveMessageShow(QString message)
 {
-    this->ui->textBrowserMessageShow->append("[Client]" + message);
+    message = QDateTime::currentDateTime().toString().toUtf8() + "\n[Client]\n" + message;
+    this->ui->textBrowserMessageShow->append(message);
 }
 
 void Widget::on_btnMessageSend_clicked()
@@ -40,7 +41,13 @@ void Widget::on_btnMessageSend_clicked()
         return;
     }
     tcpserver.messageSend(this->ui->textEditMessageInput->toPlainText());//发送输入框中的信息
-    this->ui->textBrowserMessageShow->append("[Server]" + this->ui->textEditMessageInput->toPlainText());//聊天框中添加Server发送的信息
+    this->ui->textBrowserMessageShow->append(QDateTime::currentDateTime().toString() + "\n[Server]\n" + this->ui->textEditMessageInput->toPlainText());//聊天框中添加Server发送的信息
     this->ui->textEditMessageInput->clear();//发送信息之后清除发送的信息
+}
+
+
+void Widget::on_btnImagSelect_clicked()
+{
+
 }
 

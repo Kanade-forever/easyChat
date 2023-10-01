@@ -3,7 +3,9 @@
 
 #include <QObject>
 #include <QTcpSocket>
+#include <QDateTime>
 #include <QDebug>
+#include <QFileDialog>
 
 class tcpSocket : public QObject
 {

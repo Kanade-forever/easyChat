@@ -8,6 +8,8 @@
 #include <QHostAddress>
 #include <QTextBrowser>
 #include <QList>
+#include <QDateTime>
+#include <QFileDialog>
 
 class tcpServer:public QObject
 {

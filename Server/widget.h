@@ -27,5 +27,6 @@ private slots:
     void onServerStatusUpdate(QString message);
     void onServerReceiveMessageShow(QString message);
     void on_btnMessageSend_clicked();
+    void on_btnImagSelect_clicked();
 };
 #endif // WIDGET_H
